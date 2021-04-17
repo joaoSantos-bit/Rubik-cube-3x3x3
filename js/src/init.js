@@ -4,14 +4,16 @@ const init = (dimensions = 3) => {
     const backgroundColor = "#e5e5e5";
 
     const headerSize = 100;
+    const canvasHeight = window.innerHeight - headerSize;
+    const canvasWidth = window.innerWidth / 2;
 
     // configure camera
-    const camera = new THREE.PerspectiveCamera(75, (screen.width / 2) / (window.innerHeight - headerSize), 0.1, 1000);
-    camera.position.z = 6;
+    const camera = new THREE.PerspectiveCamera(75, canvasWidth / canvasHeight, 0.1, 1000);
+    camera.position.set(2, 3, 5);
 
     // configure render
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(screen.width / 2, window.innerHeight - headerSize);
+    renderer.setSize(canvasWidth, canvasHeight);
     renderer.setClearColor(backgroundColor);
     document.querySelector("#canvas").appendChild(renderer.domElement);
 
@@ -19,11 +21,6 @@ const init = (dimensions = 3) => {
     const cameraControls = new THREE.TrackballControls(camera, renderer.domElement);
     cameraControls.minDistance = 5;
     cameraControls.maxDistance = 10;
-
-    // configure light
-    const light = new THREE.PointLight(0xffffff, 1, 500);
-    light.position.set(10, 0, 20);
-    scene.add(light);
     
     // create rubik's cube
     let rubik = new Rubik();
@@ -33,9 +30,9 @@ const init = (dimensions = 3) => {
 
     // make the canvas responsive on resize
     const onResize = () => {
-        camera.aspect = (screen.width / 2) / window.innerHeight;
+        camera.aspect = canvasWidth / window.innerHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(screen.width / 2, screen.height - headerSize);
+        renderer.setSize(canvasWidth, canvasHeight);
     }
     window.addEventListener('resize', onResize, false);
 
@@ -63,6 +60,7 @@ const init = (dimensions = 3) => {
         newMoveAvaible = true;
     }
 
+    // animate layer movements
     const animateFace = () => {
         if (isAnimating) {
             if (currentMovingLayer == 'clockWisez') {
@@ -111,7 +109,7 @@ const init = (dimensions = 3) => {
         }
     }  
 
-    // movements
+    // configure movements
     let movements = [
         {name: 'R', inverse: "R'", axis: 'x', clockWise: true, offsetPosition: offsetPosition},
         {name: "R'", inverse: 'R', axis: 'x', clockWise: false, offsetPosition: offsetPosition},
@@ -127,6 +125,7 @@ const init = (dimensions = 3) => {
         {name: "B'", inverse: 'B', axis: 'z', clockWise: false, offsetPosition: -offsetPosition}
     ];
 
+    // set a layer's movement
     const setMove = (movement) => {
         let layer = rubik.getLayer(movement.axis, movement.offsetPosition);
         isAnimating = true;
@@ -141,7 +140,7 @@ const init = (dimensions = 3) => {
     // controls
     const controls = document.querySelectorAll(".command-main-button");
     const moveControls = document.querySelectorAll(".command-button");
-    
+    // configure what each move command should do
     moveControls.forEach((moveControl, index) => {
         let movement;
         moveControl.addEventListener('click', () => {
@@ -216,7 +215,6 @@ const init = (dimensions = 3) => {
                     nextMove = movements.filter(movement => movement.inverse == lastMove.name);
                     movementsQueue.push(nextMove[0]);
                 }
-                // reset the stack
             } else if (index == 2) { // Undo
                 if (undo && newMoveAvaible) {
                     let lastMove = movementsStack.pop();
@@ -225,12 +223,14 @@ const init = (dimensions = 3) => {
                     undo  = false;
                 }
             } else if (index == 3) { // Reset
-                if (movementsStack.length > 0) {
+                if (movementsStack.length > 0 && newMoveAvaible) {
                     rubik.getRubik().forEach(cube => scene.remove(cube));
                     rubik.deleteRubik();
                     rubik = createRubik(rubik, dimensions);
                     cubes = rubik.getRubik();
                     rubik.getRubik().forEach(cube => scene.add(cube));
+                    // reset the movements stack
+                    movementsStack = [];
                 }
             }
         }, false);
@@ -255,11 +255,12 @@ const init = (dimensions = 3) => {
     render();
 }
 
+// generate a radom integer
 const generateRandom = (range) => {
     return Math.floor(Math.random() * (range + 1));
 }
 
-
+// create rubik's cube
 const createRubik = (rubik, dimensions) => {
     let spacing = 0.05;
     let offSetPosition = (dimensions - 1) / 2;
