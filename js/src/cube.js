@@ -13,9 +13,9 @@ class Cube {
 		this._cube.position.set(this._axis.x, this._axis.y, this._axis.z);
 
 		// https://stackoverflow.com/questions/41031214/javascript-threejs-3d-draw-solid-cubic-with-border
-		const geo = new THREE.EdgesGeometry(this._cube.geometry);
-		const mat = new THREE.LineBasicMaterial({color: 0x1c1c1c, linewidth: 4});
-		const wireframe = new THREE.LineSegments(geo, mat);
+		const geometry = new THREE.EdgesGeometry(this._cube.geometry);
+		const material = new THREE.LineBasicMaterial({color: 0x1c1c1c, linewidth: 4});
+		const wireframe = new THREE.LineSegments(geometry, material);
 		wireframe.renderOrder = 1; // make sure wireframes are rendered 2nd
 		this._cube.add(wireframe);
 	}
