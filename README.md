@@ -19,4 +19,4 @@ This project aimed to create a virtual three dimensional rubik's cube.
 <br>
 <br>
 
-made with :blue_heart: by JoaoSantos-bi :wave:
+made with :blue_heart: by <a href="https://github.com/joaoSantos-bit">JoaoSantos-bit</a> :wave:
