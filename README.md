@@ -36,13 +36,9 @@
 <h4 align="center"> :construction: iCubeMax :rocket: is under construction... :construction: </h4>
 
 <br>
-<br>
 
 ## License
 <img src="https://img.shields.io/github/license/Rocketseat/unform"/>
-
-<br>
-<br>
 
 ## Author
 made with :blue_heart: by <a href="https://github.com/joaoSantos-bit">JoaoSantos-bit</a> :wave:
