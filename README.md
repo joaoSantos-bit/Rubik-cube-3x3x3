@@ -31,13 +31,9 @@
 ## Roadmap
 <p> In order to run this project you must follow the steps bellow. </p>
 <br>
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
-```
-```
-$ git clone https://github.com/joaoSantos-bit/Rubik-cube-3x3 
-```
+
+<code> $ git clone https://github.com/joaoSantos-bit/Rubik-cube-3x3 </code>
+
 
 <br>
 <br>
