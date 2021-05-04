@@ -32,7 +32,7 @@
 <p> In order to run this project you must follow the steps bellow. </p>
 <br>
 ``` bash
-style="padding: 32px 16px"> $ git clone https://github.com/joaoSantos-bit/Rubik-cube-3x3 
+$ git clone https://github.com/joaoSantos-bit/Rubik-cube-3x3 
 ```
 
 <br>
