@@ -17,7 +17,7 @@
 </p>
 <br>
 
-## Goals
+## :checkered_flag: Goals
 <p> This project has as its main goal to visualize how linear algebra concepts can be applied in a project. </p>
 <br>
 
