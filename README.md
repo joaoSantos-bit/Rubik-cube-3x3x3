@@ -31,7 +31,7 @@
 ## Roadmap
 <p> In order to run this project you must follow the steps bellow. </p>
 <br>
-"""$ git clone <https://github.com/joaoSantos-bit/Rubik-cube-3x3>"""
+> $ git clone https://github.com/joaoSantos-bit/Rubik-cube-3x3
 
 <br>
 <br>
