@@ -22,7 +22,7 @@
 <br>
 
 ## Roadmap
-<p> In order to run this project you must follow the steps bellow. </p>
+<p> In order to clone this project you must follow the steps bellow. </p>
 <br>
 
 ~~~Shell
