@@ -31,9 +31,6 @@
 * :white_check_mark: JavaScript
 
 <br>
-
-<h4 align="center"> :construction: iCubeMax :rocket: is under construction... :construction: </h4>
-
 <br>
 
 ## License
