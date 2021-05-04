@@ -7,6 +7,14 @@ This project aimed to create a virtual three dimensional rubik's cube.
 </div>
 <br>
 
+<p align="center">
+  <a href="#objetivo">Goals</a> •
+  <a href="#roadmap">Roadmap</a> • 
+  <a href="#tecnologias">Technologies</a> • 
+  <a href="#licenc-a">License</a> • 
+  <a href="#autor">Author</a>
+</p>
+
 ## :rocket: Technologies
 
 <p>This project was developed using the following technologies.</p>
