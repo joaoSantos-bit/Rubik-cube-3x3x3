@@ -22,7 +22,10 @@
 <br>
 <br>
 
-## :rocket: Technologies
+## Goals
+<p> This project has as its main goal to visualize how linear algebra concepts can be applied in a project. </p>
+
+## Technologies
 <p>This project was developed using the following technologies.</p>
 
 * :white_check_mark: Three.js
