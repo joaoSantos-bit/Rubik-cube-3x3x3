@@ -32,7 +32,9 @@
 <p> In order to run this project you must follow the steps bellow. </p>
 <br>
 
-><code><br> $ git clone https://github.com/joaoSantos-bit/Rubik-cube-3x3 <br></code>
+~~~Shell
+$ git clone https://github.com/joaoSantos-bit/Rubik-cube-3x3
+~~~
 
 
 <br>
