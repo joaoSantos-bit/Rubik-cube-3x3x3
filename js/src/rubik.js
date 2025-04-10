@@ -1,51 +1,27 @@
 class Rubik {
-    constructor() {
-        this._cubes = [];
-    }
-    
-    setCube(_cube) {
-        this._cubes.push(_cube);
-    }
+	constructor() {
+		this._cubes = [];
+	}
 
-    getRubik() {
-        return this._cubes;
-    }  
+	setCube(cube) {
+		this._cubes.push(cube);
+	}
 
-    deleteRubik() {
-        this._cubes = [];
-    }
+	getRubik() {
+		return this._cubes;
+	}
 
-    _checkError(rotationAxis, offSetPosition) {
-        let error = 0.001;
-        return Math.abs(rotationAxis - offSetPosition) <= error;
-    }
+	deleteRubik() {
+		this._cubes = [];
+	}
 
-    _buildLayer(rotationAxis, offSetPosition) {
-        let layer = [];
-        if (rotationAxis == 'x') {
-            this._cubes.forEach(cube => {
-                if (this._checkError(cube.position.x, offSetPosition)) {
-                    layer.push(cube);
-                }
-            });
-        } else if (rotationAxis == 'y') {
-            this._cubes.forEach(cube => {
-                if (this._checkError(cube.position.y, offSetPosition)) {
-                    layer.push(cube);
-                }
-            });
-        } else {
-            this._cubes.forEach(cube => {
-                if (this._checkError(cube.position.z, offSetPosition)) {
-                    layer.push(cube);
-                }
-            });
-        }
+	_checkError(a, b, tolerance = 0.001) {
+		return Math.abs(a - b) <= tolerance;
+	}
 
-        return layer;
-    }
-    
-    getLayer(rotationAxis, offSetPosition) {
-        return this._buildLayer(rotationAxis, offSetPosition);
-    }
-};
+	getLayer(axis, offset) {
+		return this._cubes.filter(cube => this._checkError(cube.position[axis], offset));
+	}
+}
+
+export default Rubik;
